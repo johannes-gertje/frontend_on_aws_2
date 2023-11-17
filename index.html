@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>HTTP Client</title>
+
+        <script>
+
+            api();
+
+            function api(){
+
+                                                    // Set up our HTTP request
+                                                    var xhr = new XMLHttpRequest();
+                                                    //News 1
+                                                    xhr.open('GET', 'http://3.75.249.194/api/test');
+                                                    //xhr.setRequestHeader('sumtauth-header', accessTkn);
+                                                    xhr.send(null);
+
+                                                    xhr.onload = function () {
+                                                        if (xhr.status >= 200 && xhr.status < 300) {
+                                                            newstext = JSON.parse(xhr.responseText);
+
+
+                                                            console.log("title: "+xhr.responseText);
+                                                            console.log("title: "+newstext.employees[0].firstName);
+                                                            document.getElementById("demo").innerHTML = newstext.employees[0].firstName;
+                                                        } else {
+                                                            console.log(xhr.responseText);
+                                                        }
+                                                    };
+            }
+
+
+            </script>
+
+    </head>
+    <body>
+        <p id="demo"></p>
+    <body>
+</html>
